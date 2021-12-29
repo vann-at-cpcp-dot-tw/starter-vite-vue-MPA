@@ -1,0 +1,36 @@
+@mixin lineClamp($lines)
+  height: auto
+  display: -webkit-box !important
+  -webkit-box-orient: vertical !important
+  text-overflow: ellipsis !important
+  overflow: hidden !important
+  -webkit-line-clamp: $lines
+.line-clamp
+  @include lineClamp(1)
+@for $i from 1 through 3
+  .line-clamp-#{$i}
+    @include lineClamp($i)
+@media (min-width: #{$bp-sm}px)
+  @for $i from 1 through 3
+    .sm\:line-clamp-#{$i}
+      @include lineClamp($i)
+@media (min-width: #{$bp-md}px)
+  @for $i from 1 through 3
+    .md\:line-clamp-#{$i}
+      @include lineClamp($i)
+@media (min-width: #{$bp-lg}px)
+  @for $i from 1 through 3
+    .lg\:line-clamp-#{$i}
+      @include lineClamp($i)
+@media (min-width: #{$bp-xl}px)
+  @for $i from 1 through 3
+    .xl\:line-clamp-#{$i}
+      @include lineClamp($i)
+@media (min-width: #{$bp-xxl}px)
+  @for $i from 1 through 3
+    .xxl\:line-clamp-#{$i}
+      @include lineClamp($i)
+@media (min-width: #{$bp-xxxl}px)
+  @for $i from 1 through 3
+    .xxxl\:line-clamp-#{$i}
+      @include lineClamp($i)
