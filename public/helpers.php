@@ -20,7 +20,7 @@ function vite(string $entry): string
 
 // Some dev/prod mechanism would exist in your project
 function isDev(){
-    return !file_exists( dirname(__DIR__).'/public/dist' );
+    return !file_exists( __DIR__.'/dist' );
 }
 
 // function isDev(string $entry): bool
