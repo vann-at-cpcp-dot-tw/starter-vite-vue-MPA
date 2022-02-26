@@ -47,7 +47,7 @@ export default defineConfig(({mode}) => {
 
   return {
     define: {
-      VITE_PUBLIC_URL: ENV.PUBLIC_URL
+      VITE_PUBLIC_URL: `"${ENV.PUBLIC_URL}"`
     },
     plugins: [
       vue(),
