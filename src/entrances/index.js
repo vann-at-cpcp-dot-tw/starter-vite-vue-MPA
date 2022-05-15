@@ -1,6 +1,8 @@
 import { createApp, watch, nextTick } from 'vue'
 import store from '@src/store/index'
 import { router, useRoute } from '@src/routes'
+import { VueQueryPlugin } from 'vue-query'
+import { useQuery } from 'vue-query'
 import components from '@src/components'
 import * as helpers from '@src/helpers'
 
@@ -27,6 +29,17 @@ const app = createApp({
       })
     })
 
+    switch (process.env.NODE_ENV){
+      case 'development':
+        window.store = store
+        window.route = route
+        window.router = router
+        break
+
+      case 'production':
+        break
+    }
+
   }
 })
 
@@ -42,6 +55,15 @@ app.mixin({
 
 app.use(store)
 app.use(router)
+app.use(VueQueryPlugin, {
+  queryClientConfig: {
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  },
+})
 
 app.directive('focus', {
   mounted(el, isFocus) {
@@ -52,6 +74,3 @@ app.directive('focus', {
 })
 
 const VM = app.mount('#app')
-window.VM = VM
-window.app = app
-
