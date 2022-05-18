@@ -1,4 +1,4 @@
-import { createApp, watch, nextTick } from 'vue'
+import { createApp, watch, nextTick, reactive } from 'vue'
 import store from '@src/store/index'
 import { router, useRoute } from '@src/routes'
 import { useQuery, VueQueryPlugin } from 'vue-query'
